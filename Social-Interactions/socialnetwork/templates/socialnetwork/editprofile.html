@@ -1,0 +1,62 @@
+{%extends 'base.html'%}
+{% block title %}Edit Profile{% endblock%}
+{%block rightnav%}
+    <li>
+        <a href="{% url 'globalstream' %}">Global Stream</a>
+    </li>
+    <li>
+        <a href="{% url 'home' %}">Personal Blog</a>
+    </li>
+{%endblock%}
+
+{%block leftnav%}
+    <li>
+        <a href="{% url 'profile' user.username %}">{{user.username}}</a>
+    </li>
+    <li>
+        <a href="{% url 'logout' %}">Log out</a>
+    </li>
+
+{%endblock%}
+{% block content%}
+    <div class="jumbotron">
+        <div class="container">
+
+            <form method="post"> <!-- action="{% url 'register' %}"-->
+                <table>
+                <tr>
+                    <td>Last name:</td>
+                    <td><input type="text" name="lastname" ></td> <!-- value="{{lastname}}" -->
+                </tr>
+                 <tr>
+                    <td>First name:</td>
+                    <td><input type="text" name="firstname" ></td> <!-- value="{{firstname}}" -->
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td><input type="text" name="age"></td>
+                </tr>
+                <tr>
+                    <td>Bio:</td>
+                    <td><input type="text" name="bio"></td>
+                </tr>
+                <tr>
+                    <td>Image:</td>
+                    <td>
+<!--                     {% for item in items %}
+                        {% if item.picture %}
+                        <img src="{% url 'photo' item.id %}" alt="{{item.text}}" width="200px">
+                    {% endif %}
+                    {% endfor %} -->
+                        
+                    </td>
+                </tr>
+                </table>
+                <br/>
+                <input type="submit" value="Update" class='btn btn-success'/>
+                {% csrf_token %}
+            </form>
+
+        </div>
+    </div>
+{%endblock%}

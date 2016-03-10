@@ -1,0 +1,66 @@
+{%extends 'base.html'%}
+{% block title %}Social Network -- Login{% endblock%}
+{% block content%}
+    <div class="jumbotron">
+        <div class="container">
+
+            <div class='row'>
+                <div class='clo-lg-4'>
+                    {% if form.errors %}
+                        <p style="color:red">
+                            Incorrect user name and password.
+                        </p>
+                    {% endif %}
+                </div>
+                    <p class="text-left"><strong>Let's Start Your Blog Journey!</strong></p>
+                    <br />
+                    <br />
+                    <br />
+
+                    <!-- Example row of columns -->
+                    <div class="row">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                      <h2>Join now</h2>
+                      <p>
+                        <!--form-->
+                        <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+                        <table >
+                        <tr>
+                            <td >{{ form.username.label_tag }}</td>
+                            <td >{{ form.username }}</td>
+                        </tr>
+                        <tr>
+                            <td >{{ form.password.label_tag }}</td>
+                            <td >{{ form.password }}</td>
+                        </tr>
+                        <tr>
+                            <td ><input type="submit" value="Login" class="btn btn-success" /></td>
+                            <td ><a href="{% url 'register' %}">Register</a></td>
+                        </tr>
+                        </table>
+
+                        <input type="hidden" name="next" value="{{ next }}" />
+                        {% csrf_token %}
+                        </form>
+                        <!--form-->
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    </div>
+                  </div>    
+            </div>
+        </div>
+    </div>
+{%endblock%}
+
+
+
+

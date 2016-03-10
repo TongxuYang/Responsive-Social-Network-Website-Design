@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{% block title %}Gobal Stream{% endblock%}
+{%block rightnav%}
+    <li>
+        <a href="{% url 'home' %}">Personal Blog</a>
+    </li>
+
+{%endblock%}
+{%block leftnav%}
+    <li>
+        <a href="{% url 'profile' user.username %}">{{user.username}}</a>
+    </li>
+    <li>
+        <a href="{% url 'logout' %}">Log out</a>
+    </li>
+
+{%endblock%}
+
+
+{% block content%}
+    <div class="jumbotron">
+        <div class="container">
+
+            <p class="text-left"><strong>Global Stream!</strong></p>
+
+                {% for error in errors %}
+                    <p style="color:red">
+                        {{error}}
+                    </p>
+                    {% endfor %}
+
+                <p>
+                    <ol>
+                        {% for item in items %}
+                            <li>
+                                 <br>
+                                 <!-- >
+                                 <a href="/profile/{{item.user.username}}">{{item.user}}</a></br>
+                                 <!-->
+                                 <a href="{% url 'profile' item.user.username %}">{{item.user}}</a></br>
+                                 {{item}}
+                                <br>{{item.time}}</br>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </p>
+        </div>
+    </div>
+
+{% endblock %}
